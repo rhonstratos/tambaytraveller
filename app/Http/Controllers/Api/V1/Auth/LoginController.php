@@ -14,11 +14,11 @@ class LoginController extends Controller
             $request->authenticate();
         } catch (ValidationException $e) {
             return response()->json([
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ], 422);
         } catch (\Exception $e) {
             return response()->json([
-                'error' => 'Something went wrong.'
+                'error' => 'Something went wrong.',
             ], 500);
         }
 

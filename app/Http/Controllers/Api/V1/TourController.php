@@ -16,23 +16,23 @@ class TourController extends Controller
                 ->tours()
                 ->when(
                     $request->date_from,
-                    fn($q) => $q->where('start_date', '>=', $request->date_from)
+                    fn ($q) => $q->where('start_date', '>=', $request->date_from)
                 )
                 ->when(
                     $request->date_to,
-                    fn($q) => $q->where('end_date', '<=', $request->date_to)
+                    fn ($q) => $q->where('end_date', '<=', $request->date_to)
                 )
                 ->when(
                     $request->price_from,
-                    fn($q) => $q->where('price', '>=', $request->price_from * 100)
+                    fn ($q) => $q->where('price', '>=', $request->price_from * 100)
                 )
                 ->when(
                     $request->price_to,
-                    fn($q) => $q->where('price', '<=', $request->price_to * 100)
+                    fn ($q) => $q->where('price', '<=', $request->price_to * 100)
                 )
                 ->when(
                     $request->sort_by && $request->sort_order,
-                    fn($q) => $q->orderBy($request->sort_by, $request->sort_order)
+                    fn ($q) => $q->orderBy($request->sort_by, $request->sort_order)
                 )
                 ->orderBy('start_date')
                 ->paginate()

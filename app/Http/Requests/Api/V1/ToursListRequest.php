@@ -20,7 +20,7 @@ class ToursListRequest extends FormRequest
             'date_from' => ['date'],
             'date_to' => ['date'],
             'sort_order' => ['string', Rule::in(['asc', 'desc'])],
-            'sort_by' => ['string', Rule::in(['price'])]
+            'sort_by' => ['string', Rule::in(['price'])],
         ];
     }
 

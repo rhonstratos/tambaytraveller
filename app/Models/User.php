@@ -18,15 +18,18 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, HasUuids;
 
     protected $table = 'users';
+
     protected $fillable = [
         'name',
         'email',
         'password',
     ];
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
+
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
@@ -45,7 +48,7 @@ class User extends Authenticatable
     public function password(): Attribute
     {
         return Attribute::make(
-            set: fn($value) => Hash::make($value)
+            set: fn ($value) => Hash::make($value)
         );
     }
 }

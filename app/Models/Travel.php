@@ -14,6 +14,7 @@ class Travel extends Model
     use HasFactory, HasUuids, Sluggable;
 
     protected $table = 'travels';
+
     protected $fillable = [
         'is_public',
         'slug',
@@ -21,7 +22,9 @@ class Travel extends Model
         'description',
         'num_of_days',
     ];
+
     protected $hidden = [];
+
     protected $casts = [];
 
     public function tours(): HasMany
@@ -33,15 +36,15 @@ class Travel extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
-            ]
+                'source' => 'name',
+            ],
         ];
     }
 
     public function numOfNights(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attributes) => $attributes['num_of_days'] - 1
+            get: fn ($value, $attributes) => $attributes['num_of_days'] - 1
         );
     }
 }

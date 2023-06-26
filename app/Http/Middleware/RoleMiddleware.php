@@ -16,12 +16,13 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next, string $role): Response
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             abort(401, 'User unauthenticated.');
         }
-        if (!Auth::user()->roles()->where('name', $role)->exists()) {
+        if (! Auth::user()->roles()->where('name', $role)->exists()) {
             abort(403, 'You are not authorized to access this resource.');
         }
+
         return $next($request);
     }
 }

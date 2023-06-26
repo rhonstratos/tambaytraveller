@@ -12,14 +12,17 @@ class Tours extends Model
     use HasFactory, HasUuids;
 
     protected $table = 'tours';
+
     protected $fillable = [
         'travel_id',
         'name',
         'start_date',
         'end_date',
-        'price'
+        'price',
     ];
+
     protected $hidden = [];
+
     protected $casts = [];
 
     public function travel()
@@ -30,8 +33,8 @@ class Tours extends Model
     public function price(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => $value / 100,
-            set: fn($value) => $value * 100
+            get: fn ($value) => $value / 100,
+            set: fn ($value) => $value * 100
         );
     }
 }

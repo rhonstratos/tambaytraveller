@@ -20,7 +20,6 @@ Route::middleware(['auth:sanctum'])
         Route::put('travels/{travel}', [Admin\TravelController::class, 'update']);
     });
 
-
 Route::resource('travels', TravelController::class)
     ->only(['index']);
 Route::resource('travels.tours', TourController::class)
