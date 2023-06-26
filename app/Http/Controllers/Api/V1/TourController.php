@@ -7,6 +7,11 @@ use App\Http\Requests\Api\V1\ToursListRequest;
 use App\Http\Resources\TourResource;
 use App\Models\Travel;
 
+/**
+ * @group Public Endpoints
+ *
+ * @subGroup Tours
+ */
 class TourController extends Controller
 {
     public function index(Travel $travel, ToursListRequest $request)

@@ -1,0 +1,219 @@
+name: 'Admin API Endpoints'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/admin/travels
+    metadata:
+      groupName: 'Admin API Endpoints'
+      groupDescription: ''
+      subgroup: Travel
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      is_public:
+        name: is_public
+        description: 'The public status of the travel.'
+        required: false
+        example: true
+        type: boolean
+        custom: []
+      name:
+        name: name
+        description: 'The name of the travel.'
+        required: true
+        example: 'Travel name 1'
+        type: string
+        custom: []
+      description:
+        name: description
+        description: 'The description of the travel.'
+        required: true
+        example: 'lorem ipsum'
+        type: string
+        custom: []
+      num_of_days:
+        name: num_of_days
+        description: 'The name of the travel.'
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    cleanBodyParameters:
+      is_public: true
+      name: 'Travel name 1'
+      description: 'lorem ipsum'
+      num_of_days: 5
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/v1/admin/travels/{travel_id}/tours'
+    metadata:
+      groupName: 'Admin API Endpoints'
+      groupDescription: ''
+      subgroup: Tours
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      travel_id:
+        name: travel_id
+        description: 'The ID of the travel.'
+        required: true
+        example: 998072b8-4e2d-4f41-9ac4-d9f6bce39096
+        type: string
+        custom: []
+    cleanUrlParameters:
+      travel_id: 998072b8-4e2d-4f41-9ac4-d9f6bce39096
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the tour.'
+        required: true
+        example: 'Tour name 1'
+        type: string
+        custom: []
+      start_date:
+        name: start_date
+        description: 'The start date of the tour.'
+        required: true
+        example: '2023-06-26'
+        type: date
+        custom: []
+      end_date:
+        name: end_date
+        description: 'The end date of the tour, must be after `start_date`.'
+        required: true
+        example: '2023-06-26'
+        type: date
+        custom: []
+      price:
+        name: price
+        description: 'The name of the tour.'
+        required: true
+        example: '123.45'
+        type: double|float|int
+        custom: []
+      travel_id:
+        name: travel_id
+        description: 'The uid of the related travel.'
+        required: true
+        example: 336b2ea1-c979-44ac-9de1-1d36a1ef1005
+        type: uuid
+        custom: []
+    cleanBodyParameters:
+      name: 'Tour name 1'
+      start_date: '2023-06-26'
+      end_date: '2023-06-26'
+      price: '123.45'
+      travel_id: 336b2ea1-c979-44ac-9de1-1d36a1ef1005
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/v1/admin/travels/{travel_id}'
+    metadata:
+      groupName: 'Admin API Endpoints'
+      groupDescription: ''
+      subgroup: Travel
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      travel_id:
+        name: travel_id
+        description: 'uuid The uuid of the travel.'
+        required: false
+        example: 336b2ea1-c979-44ac-9de1-1d36a1ef1005
+        type: string
+        custom: []
+    cleanUrlParameters:
+      travel_id: 336b2ea1-c979-44ac-9de1-1d36a1ef1005
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      is_public:
+        name: is_public
+        description: 'The public status of the travel.'
+        required: false
+        example: true
+        type: boolean
+        custom: []
+      name:
+        name: name
+        description: 'The name of the travel.'
+        required: false
+        example: 'New travel name 1'
+        type: string
+        custom: []
+      description:
+        name: description
+        description: 'The description of the travel.'
+        required: false
+        example: 'lorem ipsum 2'
+        type: string
+        custom: []
+      num_of_days:
+        name: num_of_days
+        description: 'The name of the travel.'
+        required: false
+        example: 10
+        type: integer
+        custom: []
+    cleanBodyParameters:
+      is_public: true
+      name: 'New travel name 1'
+      description: 'lorem ipsum 2'
+      num_of_days: 10
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: TravelResource
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
