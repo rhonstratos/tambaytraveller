@@ -15,6 +15,7 @@ Route::middleware([
     'role:admin'
 ])->prefix('admin')->group(function () {
     Route::post('travels', [Admin\TravelController::class, 'store']);
+    Route::post('travels/{travel}/tours', [Admin\TourController::class, 'store']);
 });
 
 
