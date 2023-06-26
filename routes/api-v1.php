@@ -10,13 +10,15 @@ Route::prefix('auth')->group(function () {
     Route::post('login', LoginController::class);
 });
 
-Route::middleware([
-    'auth:sanctum',
-    'role:admin'
-])->prefix('admin')->group(function () {
-    Route::post('travels', [Admin\TravelController::class, 'store']);
-    Route::post('travels/{travel}/tours', [Admin\TourController::class, 'store']);
-});
+Route::middleware(['auth:sanctum'])
+    ->prefix('admin')
+    ->group(function () {
+        Route::middleware(['role:admin'])->group(function () {
+            Route::post('travels', [Admin\TravelController::class, 'store']);
+            Route::post('travels/{travel}/tours', [Admin\TourController::class, 'store']);
+        });
+        Route::put('travels/{travel}', [Admin\TravelController::class, 'update']);
+    });
 
 
 Route::resource('travels', TravelController::class)
