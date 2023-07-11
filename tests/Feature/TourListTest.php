@@ -202,4 +202,17 @@ class TourListTest extends TestCase
         $response = $this->getJson('api/v1/travels/'.$travel->slug.'/tours?price_from=abcde');
         $response->assertStatus(422);
     }
+
+    public function test_tours_list_show_returns_single_record(): void
+    {
+        $travel = Travel::factory()->create(['is_public' => true]);
+        $tour = Tours::factory()->create([
+            'travel_id' => $travel->id,
+        ]);
+
+        $response = $this->getJson('api/v1/travels/'.$travel->slug.'/tours/'.$tour->id);
+
+        $response->assertStatus(200);
+        $response->assertJsonFragment(['id' => $tour->id]);
+    }
 }
