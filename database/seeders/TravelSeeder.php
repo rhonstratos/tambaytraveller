@@ -2,17 +2,18 @@
 
 namespace Database\Seeders;
 
+use App\Models\Travel;
 use Illuminate\Database\Seeder;
 
-class DemoSeeder extends Seeder
+class TravelSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $this->call(RoleSeeder::class);
-        $this->call(UserSeeder::class);
-        $this->call(TravelSeeder::class);
+        Travel::factory(50)
+            ->hasTours(rand(25, 50))
+            ->create();
     }
 }
