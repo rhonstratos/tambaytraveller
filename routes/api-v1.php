@@ -21,7 +21,9 @@ Route::middleware(['auth:sanctum'])
     });
 
 Route::resource('travels', TravelController::class)
-    ->only(['index']);
+    ->only(['index', 'show'])
+    ->parameters(['travels' => 'travel:slug']);
+
 Route::resource('travels.tours', TourController::class)
-    ->only(['index'])
+    ->only(['index', 'show'])
     ->parameters(['travels' => 'travel:slug']);

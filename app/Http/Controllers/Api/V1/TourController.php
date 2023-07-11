@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\ToursListRequest;
 use App\Http\Resources\TourResource;
+use App\Models\Tours;
 use App\Models\Travel;
 
 /**
@@ -42,5 +43,10 @@ class TourController extends Controller
                 ->orderBy('start_date')
                 ->paginate()
         );
+    }
+
+    public function show(Travel $travel, Tours $tour)
+    {
+        return new TourResource($tour);
     }
 }

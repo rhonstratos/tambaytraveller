@@ -20,4 +20,9 @@ class TravelController extends Controller
             Travel::where('is_public', true)->paginate()
         );
     }
+
+    public function show(Travel $travel)
+    {
+        return new TravelResource($travel);
+    }
 }
